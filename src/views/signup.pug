@@ -1,0 +1,17 @@
+doctype html
+html
+    head
+        title= title
+        link(rel="stylesheet", type="text/css", href="/stylesheets/skeleton.css")
+
+    body
+        .container
+            form(id='form', method='post', encType="multipart/form-data")
+                label(for='user') user
+                input(type='text', id='user', name='user' required)
+                label(for='display') name
+                input(type='text', id='display', name='display' required)
+                label(for='password') password
+                input(type='password', id='password', name='password' required)
+                br
+                input(type='submit' value='register')

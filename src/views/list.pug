@@ -1,0 +1,33 @@
+doctype html
+html
+    head
+        title= title
+        link(rel="stylesheet", type="text/css", href="/stylesheets/skeleton.css")
+
+    body
+        div#app.container
+            table.u-full-width
+                thead
+                    tr
+                        th id
+                        th target
+                        th type
+                        th name
+                        th desc
+                        th added by
+                        th timestamp
+                        th
+                tbody
+                    tr(v-for="row of table")
+                        td {{row._id}}
+                        td {{row.target}}
+                        td {{row.type}}
+                        td
+                            a(:href="`${row.type.split('/')[0]}/${row.url}`") {{row.url}}
+                        td {{row.desc}}
+                        td {{row.added_by}}
+                        td {{row.update_time}}
+                        td
+                            button(class='delete_button', @click="deleteItem(row._id)") delete
+        script(src="/scripts/vue.js")
+        script(src="/scripts/list.js")

@@ -1,0 +1,17 @@
+doctype html
+html
+    head
+        title= title
+        link(rel="stylesheet", type="text/css", href="/stylesheets/skeleton.css")
+
+    body
+        .container
+            form(id='form', method='post', action='/api/v1/content', encType="multipart/form-data")
+                label(for='target') order
+                input(type='number', id='target', name='order', min='0', max='3' required)
+                label(for='file') file
+                input(type='file', id='file', name='url', required)
+                label(for='desc') text
+                input(type='textarea', id='desc', name='desc')
+                br
+                input(type='submit' value='Upload')
