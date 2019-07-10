@@ -33,7 +33,6 @@ mongoose.connection.once('open', () => { console.log('mongoose connected') })
 // ------------------------------------------------------//
 
 router.get('/:version/content', (req: Request, res: Response, next: NextFunction) => {
-
   Content.find({}, req.query.select, (err: Error, docs: ContentDocument[]) => {
     if (err) return next(err)
     res.locals.docs = docs
