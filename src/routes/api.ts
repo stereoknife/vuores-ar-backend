@@ -1,16 +1,16 @@
 import express from 'express'
 import { NextFunction, Request, Response } from 'express'
 
-import mongoose, { Collection } from 'mongoose'
+import mongoose from 'mongoose'
 import { Error, Document } from 'mongoose'
 import { Content, ContentDocument } from '../models/Content'
 import { Target, TargetDocument } from '../models/Target'
+import { Collection, CollectionDocument } from '../models/Collection'
 
 import fileUpload from 'express-fileupload'
 import { UploadedFile } from 'express-fileupload'
 
 import path = require('path')
-import { CollectionDocument } from '../models/Collection';
 
 const router = express.Router()
 
@@ -55,7 +55,7 @@ router.get('/:version/target', (req: Request, res: Response, next: NextFunction)
 router.get('/:version/target/contents', (req: Request, res: Response, next: NextFunction) => {
 
   Target
-    .findOne({})
+    .findOne({name: req.query.name})
     .populate({
       path: 'collection',
       populate: {path: 'contents'},
@@ -79,7 +79,23 @@ function sendResult (req: Request, res: Response): void{
 // CREATE // POST
 // ------------------------------------------------------//
 
-router.post('/:version/:table', (req: Request, res: Response, next: NextFunction) => {
+router.post('/:version/collection', (req: Request, res: Response, next: NextFunction) => {
+  
+  const name: string = req.body.name
+
+  console.log('uploading...')
+
+  Collection.create({
+    name,
+  },
+  (err: Error) => {
+    if (err) return next(err)
+    res.sendStatus(201)
+  })
+
+})
+
+router.post('/:version/file', (req: Request, res: Response, next: NextFunction) => {
   if (!req || !req.files || !req.files.url) return next(new Error("Error: Files missing"))
   
   const file = req.files.url as UploadedFile
