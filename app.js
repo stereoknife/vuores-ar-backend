@@ -1,6 +1,3 @@
-//Definitions
-import {Request, Response, NextFunction} from "express"
-
 const createError = require('http-errors')
 const express = require('express')
 const path = require('path')
@@ -36,22 +33,22 @@ app.use('/api', apiRouter)
 
 // PostCSS
 app.use('/css', postcssMiddleware({
-  src (req: Request) {
+  src (req) {
     return path.join(__dirname, 'public', 'stylesheets', req.url)
   },
   plugins: [
     require('autoprefixer'),
-    require('postcss-preset-env'),
-  ],
+    require('postcss-preset-env')
+  ]
 }))
 
 // Catch 404 and forward to error handler
-app.use((req: Request, res: Response, next: NextFunction) => {
+app.use((req, res, next) => {
   next(createError(404))
 })
 
 // error handler
-app.use((err: Error & {status?: number}, req: Request, res: Response) => {
+app.use((err, req, res) => {
   // set locals, only providing error in development
   res.locals.message = err.message
   res.locals.error = req.app.get('env') === 'development' ? err : {}
