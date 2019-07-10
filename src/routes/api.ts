@@ -1,7 +1,7 @@
 import express from 'express'
 import { NextFunction, Request, Response } from 'express'
 
-import mongoose from 'mongoose'
+import mongoose, { Collection } from 'mongoose'
 import { Error, Document } from 'mongoose'
 import { Content, ContentDocument } from '../models/Content'
 import { Target, TargetDocument } from '../models/Target'
@@ -10,6 +10,7 @@ import fileUpload from 'express-fileupload'
 import { UploadedFile } from 'express-fileupload'
 
 import path = require('path')
+import { CollectionDocument } from '../models/Collection';
 
 const router = express.Router()
 
@@ -51,12 +52,27 @@ router.get('/:version/target', (req: Request, res: Response, next: NextFunction)
 
 }, sendResult)
 
+router.get('/:version/target/contents', (req: Request, res: Response, next: NextFunction) => {
+
+  Target
+    .findOne({})
+    .populate({
+      path: 'collection',
+      populate: {path: 'contents'},
+    })
+    .exec((err: Error, target: TargetDocument) => {
+      if (err) return next(err)
+      res.locals.docs = (target.collection as CollectionDocument).contents
+      next()
+    })
+}, sendResult)
+
 function sendResult (req: Request, res: Response): void{
 
   res.locals.docs.forEach((doc: Document) => {
     res.locals.json.push(doc.toJSON())
   })
-  res.json(req.query.asObject ? { elements: res.json } : res.locals.json)
+  res.json(req.query.asObject ? { elements: res.locals.json } : res.locals.json)
 }
 
 // ------------------------------------------------------//

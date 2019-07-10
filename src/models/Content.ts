@@ -1,4 +1,5 @@
 import { Document, model, Schema } from "mongoose"
+import { UserDocument } from "./User"
 
 export type ContentDocument = Document & {
   order: number,
@@ -6,8 +7,7 @@ export type ContentDocument = Document & {
   type: string,
   url: string,
   desc: string,
-  addedBy: Document | string,
-  // target: mongoose.Document | String,
+  addedBy: Schema.Types.ObjectId | UserDocument,
   updateTime: Date
 }
 
@@ -31,8 +31,10 @@ const contentSchema = new Schema({
     required: true,
   },
   desc: String,
-  addedBy: {type: Schema.Types.ObjectId, ref: 'User'},
-  // target: Schema.Types.ObjectId,
+  addedBy: {
+    type: Schema.Types.ObjectId, 
+    ref: 'User',
+  },
   updateTime: {
     type: Date,
     default: Date.now(),
