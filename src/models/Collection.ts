@@ -18,4 +18,4 @@ const collectionSchema = new Schema({
   }],
 })
 
-export const Collection = model<CollectionDocument>('User', collectionSchema)
+export const Collection = model<CollectionDocument>('Collection', collectionSchema)
