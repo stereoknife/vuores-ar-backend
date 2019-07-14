@@ -6,8 +6,9 @@ const targetSchema = new Schema({
     type: String,
     required: true
   },
-  collection: {
-    type: Schema.Types.ObjectId
+  gallery: {
+    type: Schema.Types.ObjectId,
+    ref: 'Gallery'
   },
   updateTime: {
     type: Date,

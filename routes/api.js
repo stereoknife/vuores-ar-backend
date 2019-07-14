@@ -4,10 +4,12 @@ const fileUpload = require('express-fileupload')
 const mongoose = require('mongoose')
 const Content = require('../models/Content')
 const Target = require('../models/Target')
-const Collection = require('../models/Collection')
+const Gallery = require('../models/Gallery')
 //const User = require('../models/User')
 
 const path = require('path')
+
+const { purge, catchPromise } = require('../util/util.js')
 
 const router = express.Router()
 
@@ -30,11 +32,25 @@ mongoose.connection.once('open', () => { console.log('mongoose connected') })
 // ------------------------------------------------------//
 
 router.get('/:version/content', (req, res, next) => {
-  Content.find({}, req.query.select, (err, docs) => {
+  Content.find(req.query.find || {}, req.query.select, (err, docs) => {
     if (err) return next(err)
     res.locals.docs = docs
     next()
   })
+}, sendResult)
+
+router.get('/:version/gallery', async (req, res, next) => {
+  Gallery
+    .find({})
+    .select(req.query.select)
+    .populate(req.query.populate)
+    .exec()
+    .then(docs => {
+      console.log(docs)
+      res.locals.docs = docs
+      return next()
+    })
+    .catch(reason => { return next(new Error(reason)) })
 }, sendResult)
 
 router.get('/:version/target', (req, res, next) => {
@@ -49,20 +65,22 @@ router.get('/:version/target/contents', (req, res, next) => {
   Target
     .findOne({ name: req.query.name })
     .populate({
-      path: 'collection',
+      path: 'gallery',
       populate: { path: 'contents' }
     })
     .exec((err, target) => {
       if (err) return next(err)
-      res.locals.docs = target.collection.contents
+      res.locals.docs = target.gallery.contents
       next()
     })
 }, sendResult)
 
 function sendResult (req, res) {
+  res.locals.json = []
   res.locals.docs.forEach(doc => {
     res.locals.json.push(doc.toJSON())
   })
+  console.log(JSON.stringify(res.locals.json))
   res.json(req.query.asObject ? { elements: res.locals.json } : res.locals.json)
 }
 
@@ -70,8 +88,8 @@ function sendResult (req, res) {
 // CREATE // POST
 // ------------------------------------------------------//
 
-router.post('/:version/collection', (req, res, next) => {
-  Collection.create({
+router.post('/:version/gallery', (req, res, next) => {
+  Gallery.create({
     name: req.body.name,
     contents: req.body.contents
   },
@@ -82,7 +100,7 @@ router.post('/:version/collection', (req, res, next) => {
 })
 
 router.post('/:version/file', (req, res, next) => {
-  if (!req || !req.files || !req.files.url) return next(new Error('Error: Files missing'))
+  if (!req.files || !req.files.url) return next(new Error('Error: Files missing'))
 
   const file = req.files.url
   const type = file.mimetype.split('/')[0]
@@ -103,7 +121,7 @@ router.post('/:version/file', (req, res, next) => {
       type,
       url: publicDir
     },
-    (err) => {
+    err => {
       if (err) return next(err)
       res.sendStatus(201)
     })
@@ -114,35 +132,46 @@ router.post('/:version/file', (req, res, next) => {
 // UPDATE // PUT
 // ------------------------------------------------------//
 
-// Collection
+// Gallery
 // ----------
-router.put('/:version/collection/:id', (req, res, next) => {
-  const update = {
-    name: req.body.name
-  }
-  purge(update)
+router.put('/:version/gallery/:id?', async (req, res, next) => {
+  const id = req.params.id || req.query.id
+  if (!id) return next(new Error('No id field provided as parameter or query'))
 
-  Collection.findByIdAndUpdate(req.params.id, update, (err) => {
-    if (err) return next(err)
-    res.sendStatus(201)
-  })
+  const ops = {
+    add (doc) { doc.contents.push(req.body.content) },
+    pop (doc) { doc.contents.pop() },
+    shift (doc) { doc.contents.shift() },
+    splice (doc) { doc.contents.splice(req.body.i, req.body.amount || 1) },
+    name (doc) { if (req.query.name) doc.name = req.query.name }
+  }
+
+  if (!ops[req.query.op]) return next(new Error('Missing or invalid operation in query.'))
+  try {
+    const doc = await Gallery.findById(id).exec()
+    ops[req.query.op](doc)
+    await doc.save()
+  } catch (reason) {
+    return next(new Error(reason))
+  }
 })
 
 // Content
 // ----------
-router.put('/:version/content/:id', (req, res, next) => {
+router.put('/:version/content/:id?', (req, res, next) => {
+  const id = req.params.id || req.query.id
+  if (!id) return next(new Error('No id field provided as parameter or query'))
+
   const update = {
     order: req.body.order,
     enabled: req.body.enabled,
     type: req.body.type,
     url: req.body.url,
     desc: req.body.string,
-    addedBy: mongoose.Types.ObjectId(req.body.user),
-    updateTime: Date.now()
+    addedBy: req.body.user._id
   }
-  purge(update)
 
-  Content.findByIdAndUpdate(req.params.id, update, (err) => {
+  Content.findByIdAndUpdate(id, update, (err) => {
     if (err) return next(err)
     res.sendStatus(201)
   })
@@ -151,14 +180,15 @@ router.put('/:version/content/:id', (req, res, next) => {
 // Target
 // ----------
 router.put('/:version/target/:id', (req, res, next) => {
+  const id = req.params.id || req.query.id
+  if (!id) return next(new Error('No id field provided as parameter or query'))
+
   const update = {
     name: req.body.name,
-    collection: mongoose.Types.ObjectId(req.body.collection),
-    updateTime: Date.now()
+    gallery: mongoose.Types.ObjectId(req.body.gallery)
   }
-  purge(update)
 
-  Target.findByIdAndUpdate(req.params.id, update, (err) => {
+  Target.findByIdAndUpdate(id, update, (err) => {
     if (err) return next(err)
     res.sendStatus(201)
   })
@@ -168,8 +198,11 @@ router.put('/:version/target/:id', (req, res, next) => {
 // DELETE // DELETE
 // ------------------------------------------------------//
 
-router.delete('/:version/:model', (req, res, next) => {
-  Content.findByIdAndDelete(req.query._id, (err) => {
+router.delete('/:version/content/:id?', (req, res, next) => {
+  const id = req.params.id || req.query.id
+  if (!id) return next(new Error('No id field provided as parameter or query'))
+
+  Content.findByIdAndDelete(id, (err) => {
     if (err) return next(err)
     res.sendStatus(200)
   })
