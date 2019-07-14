@@ -1,0 +1,13 @@
+doctype html
+html
+    head
+        title= title
+        link(rel="stylesheet", type="text/css", href="/stylesheets/skeleton.css")
+
+    body
+        .container
+            form(id='form', method='post', action='/api/v1/gallery', encType="multipart/form-data")
+                label(for='name') name
+                input(type='text', id='name', name='name', required)
+                br
+                input(type='submit' value='Create')

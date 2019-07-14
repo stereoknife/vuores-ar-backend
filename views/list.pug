@@ -6,28 +6,31 @@ html
 
     body
         div#app.container
-            table.u-full-width
-                thead
-                    tr
-                        th id
-                        th target
-                        th type
-                        th name
-                        th desc
-                        th added by
-                        th timestamp
-                        th
-                tbody
-                    tr(v-for="row of table")
-                        td {{row._id}}
-                        td {{row.target}}
-                        td {{row.type}}
-                        td
-                            a(:href="`${row.type.split('/')[0]}/${row.url}`") {{row.url}}
-                        td {{row.desc}}
-                        td {{row.added_by}}
-                        td {{row.update_time}}
-                        td
-                            button(class='delete_button', @click="deleteItem(row._id)") delete
+            div(v-for="gallery of galleries", class="u-full-width")
+                h2 {{gallery.name}}
+                table
+                    thead
+                        tr
+                            th id
+                            th target
+                            th type
+                            th name
+                            th desc
+                            th added by
+                            th timestamp
+                            th
+                    tbody
+                        tr(v-for="row of gallery.contents")
+                            td {{row._id}}
+                            td {{row.target}}
+                            td {{row.type}}
+                            td
+                                a(:href="`${row.type.split('/')[0]}/${row.url}`") {{row.url}}
+                            td {{row.desc}}
+                            td {{row.added_by}}
+                            td {{row.updateTime}}
+                            td
+                                button(class='delete_button', @click="deleteItem(row._id)") delete
         script(src="/scripts/vue.js")
+        script!= "selectedGallery = " + gallery
         script(src="/scripts/list.js")
