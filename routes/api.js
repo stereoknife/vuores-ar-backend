@@ -5,11 +5,9 @@ const mongoose = require('mongoose')
 const Content = require('../models/Content')
 const Target = require('../models/Target')
 const Gallery = require('../models/Gallery')
-//const User = require('../models/User')
+// const User = require('../models/User')
 
 const path = require('path')
-
-const { purge, catchPromise } = require('../util/util.js')
 
 const router = express.Router()
 
@@ -30,6 +28,11 @@ mongoose.connection.once('open', () => { console.log('mongoose connected') })
 // ------------------------------------------------------//
 // READ // GET
 // ------------------------------------------------------//
+
+router.get('*', (req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  next()
+})
 
 router.get('/:version/content', (req, res, next) => {
   Content.find(req.query.find || {}, req.query.select, (err, docs) => {
