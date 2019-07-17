@@ -4,7 +4,6 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const helmet = require('helmet')
-const postcssMiddleware = require('postcss-middleware')
 
 // Routers
 const indexRouter = require('./routes/index')
@@ -30,17 +29,6 @@ app.use('/static', express.static(path.join(__dirname, 'public/ar')))
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
 app.use('/api', apiRouter)
-
-// PostCSS
-app.use('/css', postcssMiddleware({
-  src (req) {
-    return path.join(__dirname, 'public', 'stylesheets', req.url)
-  },
-  plugins: [
-    require('autoprefixer'),
-    require('postcss-preset-env')
-  ]
-}))
 
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {
