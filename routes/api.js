@@ -21,15 +21,25 @@ router.use(fileUpload({
 }))
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost/test', { useNewUrlParser: true })
-mongoose.connection.on('error', console.error.bind(console, 'connection error:'))
-mongoose.connection.once('open', () => { console.log('mongoose connected') })
+mongoose.connect('mongodb://mongo:27017',
+  {
+    user: 'root',
+    pass: 'root',
+    dbName: 'vuores',
+    useNewUrlParser: true,
+    autoReconnect: true,
+    reconnectTries: 50,
+    reconnectInterval: 200
+  }
+)
+  .then(() => { console.log('mongoose connected') })
+  .catch(err => { console.log(err) })
 
 // ------------------------------------------------------//
 // READ // GET
 // ------------------------------------------------------//
 
-router.get('*', (req, res, next) => {
+router.use('*', (req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*')
   next()
 })
