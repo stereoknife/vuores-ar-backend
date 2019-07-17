@@ -113,7 +113,7 @@ router.post('/:version/gallery', (req, res, next) => {
 })
 
 router.post('/:version/file', (req, res, next) => {
-  if (!req.files || !req.files.url) return next(new Error('Error: Files missing'))
+  if (!req.files || !req.files.url) return next(new Error('Files missing'))
 
   const file = req.files.url
   const type = file.mimetype.split('/')[0]
