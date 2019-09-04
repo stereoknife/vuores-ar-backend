@@ -1,0 +1,107 @@
+{
+  "updateTime": "2019-08-13T15:17:38.861Z",
+  "_id": "5d52d495783cb8573a004d73",
+  "name": "horse2",
+  "gallery": {
+    "name": "A Wonderful Collection",
+    "limit": 10,
+    "_id": "5d3ed13de7074204334cd57d",
+    "__v": 0,
+    "contents": [
+      {
+        "enabled": true,
+        "updateTime": "2019-07-29T10:55:48.256Z",
+        "_id": "5d3ed152e7074204334cd57f",
+        "order": 1,
+        "type": "image",
+        "file": {
+          "_id": "5d3ed152e7074204334cd57e",
+          "type": "image",
+          "name": "16c3d61ab4c",
+          "ext": "png",
+          "__v": 0,
+          "file": "16c3d61ab4c.png",
+          "thumb": "16c3d61ab4c.thumb.png",
+          "url": "http://localhost:3001/static/image/16c3d61ab4c.png",
+          "thumbUrl": "http://localhost:3001/static/image/16c3d61ab4c.thumb.png",
+          "id": "5d3ed152e7074204334cd57e"
+        },
+        "desc": "How great this thing is working right?",
+        "gallery": "5d3ed13de7074204334cd57d",
+        "__v": 0,
+        "id": "5d3ed152e7074204334cd57f"
+      },
+      {
+        "enabled": true,
+        "updateTime": "2019-07-29T14:38:23.586Z",
+        "_id": "5d3f04ece48ab505d8e8a385",
+        "order": 2,
+        "type": "image",
+        "file": {
+          "_id": "5d3f04ece48ab505d8e8a384",
+          "type": "image",
+          "name": "16c3e2b3d57",
+          "ext": "png",
+          "__v": 0,
+          "file": "16c3e2b3d57.png",
+          "thumb": "16c3e2b3d57.thumb.png",
+          "url": "http://localhost:3001/static/image/16c3e2b3d57.png",
+          "thumbUrl": "http://localhost:3001/static/image/16c3e2b3d57.thumb.png",
+          "id": "5d3f04ece48ab505d8e8a384"
+        },
+        "desc": "vvv good",
+        "gallery": "5d3ed13de7074204334cd57d",
+        "__v": 0,
+        "id": "5d3f04ece48ab505d8e8a385"
+      },
+      {
+        "enabled": true,
+        "updateTime": "2019-07-29T14:38:23.586Z",
+        "_id": "5d3f04f7e48ab505d8e8a387",
+        "order": 3,
+        "type": "image",
+        "file": {
+          "_id": "5d3f04f7e48ab505d8e8a386",
+          "type": "image",
+          "name": "16c3e2b66ed",
+          "ext": "png",
+          "__v": 0,
+          "file": "16c3e2b66ed.png",
+          "thumb": "16c3e2b66ed.thumb.png",
+          "url": "http://localhost:3001/static/image/16c3e2b66ed.png",
+          "thumbUrl": "http://localhost:3001/static/image/16c3e2b66ed.thumb.png",
+          "id": "5d3f04f7e48ab505d8e8a386"
+        },
+        "desc": "one more for this boi",
+        "gallery": "5d3ed13de7074204334cd57d",
+        "__v": 0,
+        "id": "5d3f04f7e48ab505d8e8a387"
+      },
+      {
+        "enabled": true,
+        "updateTime": "2019-07-29T14:38:23.586Z",
+        "_id": "5d3f0579e48ab505d8e8a38d",
+        "order": 4,
+        "type": "image",
+        "file": {
+          "_id": "5d3f0579e48ab505d8e8a38c",
+          "type": "image",
+          "name": "16c3e2d62b5",
+          "ext": "jpg",
+          "__v": 0,
+          "file": "16c3e2d62b5.jpg",
+          "thumb": "16c3e2d62b5.thumb.jpg",
+          "url": "http://localhost:3001/static/image/16c3e2d62b5.jpg",
+          "thumbUrl": "http://localhost:3001/static/image/16c3e2d62b5.thumb.jpg",
+          "id": "5d3f0579e48ab505d8e8a38c"
+        },
+        "desc": "we're gonna need more tbh",
+        "gallery": "5d3ed13de7074204334cd57d",
+        "__v": 0,
+        "id": "5d3f0579e48ab505d8e8a38d"
+      }
+    ],
+    "id": "5d3ed13de7074204334cd57d"
+  },
+  "__v": 0
+}

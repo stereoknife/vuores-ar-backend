@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const Target = require('./Target')
 const Schema = mongoose.Schema
 
 const gallerySchema = new Schema({
@@ -8,16 +7,23 @@ const gallerySchema = new Schema({
     default: 'New Collection',
     required: true
   },
-  contents: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Content'
-  }]
+  limit: {
+    type: Number,
+    default: 10,
+    required: true
+  }
+}, { toJSON: { virtuals: true } })
+
+gallerySchema.virtual('target', {
+  ref: 'Target',
+  localField: '_id',
+  foreignField: 'gallery'
 })
 
-gallerySchema.virtual('target').get(() => {
-  return Target.findOne({ gallery: this._id }, doc => {
-    return doc
-  })
+gallerySchema.virtual('contents', {
+  ref: 'Content',
+  localField: '_id',
+  foreignField: 'gallery'
 })
 
 module.exports = mongoose.model('Gallery', gallerySchema)

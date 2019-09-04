@@ -1,41 +1,52 @@
+// --- MODULE IMPORTS ---
+// Import logging modules
 const createError = require('http-errors')
-const express = require('express')
-const path = require('path')
-const cookieParser = require('cookie-parser')
 const logger = require('morgan')
+
+// Import express modules
+const express = require('express')
+const cookieParser = require('cookie-parser')
 const helmet = require('helmet')
 
-// Routers
+// Import system modules
+const path = require('path')
+
+// Save root directory as global
+global.rootPath = __dirname
+
+// --- APP IMPORTS ---
+// Import routers
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
 const apiRouter = require('./routes/api')
 
+// Create app
 const app = express()
 
 // View engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 
-// Middleware
+// Setup middleware
 app.use(helmet())
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
-app.use(express.static(path.join(__dirname, 'public/web')))
-app.use('/static', express.static(path.join(__dirname, 'public/ar')))
+app.use(express.static(path.join(__dirname, 'public', 'web')))
+app.use('/static', express.static(process.env.STATIC_DIR))
 
 // Use routers
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
-app.use('/api', apiRouter)
+app.use('/api/v1', apiRouter)
 
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {
   next(createError(404))
 })
 
-// error handler
+// Error handler
 app.use((err, req, res) => {
   // set locals, only providing error in development
   res.locals.message = err.message

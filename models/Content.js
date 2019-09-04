@@ -16,11 +16,16 @@ const contentSchema = new Schema({
     enum: ['image', 'video'],
     required: true
   },
-  url: {
-    type: String,
+  file: {
+    type: Schema.Types.ObjectId,
+    ref: 'File',
     required: true
   },
   desc: String,
+  gallery: {
+    type: Schema.Types.ObjectId,
+    required: true
+  },
   addedBy: {
     type: Schema.Types.ObjectId,
     ref: 'User'
@@ -29,6 +34,6 @@ const contentSchema = new Schema({
     type: Date,
     default: Date.now()
   }
-})
+}, { toJSON: { virtuals: true } })
 
 module.exports = mongoose.model('Content', contentSchema)
