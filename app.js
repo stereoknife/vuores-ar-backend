@@ -12,7 +12,12 @@ const helmet = require('helmet')
 const path = require('path')
 
 // Save root directory as global
-global.rootPath = __dirname
+global.paths = {}
+global.paths.root = __dirname
+global.paths.api = path.join(__dirname, 'routes', 'api')
+global.paths.models = path.join(__dirname, 'models')
+global.paths.static = path.join(__dirname, 'public', 'web')
+global.paths.views = path.join(__dirname, 'views')
 
 // --- APP IMPORTS ---
 // Import routers
@@ -24,7 +29,7 @@ const apiRouter = require('./routes/api')
 const app = express()
 
 // View engine setup
-app.set('views', path.join(__dirname, 'views'))
+app.set('views', global.paths.views)
 app.set('view engine', 'pug')
 
 // Setup middleware
@@ -33,8 +38,8 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
-app.use(express.static(path.join(__dirname, 'public', 'web')))
-app.use('/static', express.static(process.env.STATIC_DIR))
+app.use(express.static(global.paths.static))
+app.use('/static', express.static(process.env.STATIC_DIR || path.join(__dirname, 'public', 'web')))
 
 // Use routers
 app.use('/', indexRouter)

@@ -2,10 +2,6 @@
 const express = require('express')
 const fileUpload = require('express-fileupload')
 
-// Import other modules
-const sharp = require('sharp') // Image manipulation
-const path = require('path')
-
 // Import mongoose modules
 const mongoose = require('mongoose')
 
@@ -27,10 +23,10 @@ router.use(fileUpload({
 }))
 
 // Connect to MongoDB
-mongoose.connect(`mongodb://${process.env.MONGO_IP}`,
+mongoose.connect(`mongodb://${process.env.MONGO_IP || 'localhost'}`,
   {
-    user: process.env.MONGO_USER,
-    pass: process.env.MONGO_PASS,
+    user: process.env.MONGO_USER || '',
+    pass: process.env.MONGO_PASS || '',
     dbName: 'vuores',
     useNewUrlParser: true,
     autoReconnect: true,
@@ -42,7 +38,15 @@ mongoose.connect(`mongodb://${process.env.MONGO_IP}`,
   .catch(err => { console.log(err) })
 
 // DEV ONLY
-router.use('*', (req, res, next) => {
+router.get('*', (req, res, next) => {
+  res.setHeader('Access-Control-Allow-Headers', 'content-type')
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, DELETE')
+  next()
+})
+
+router.post('*', (req, res, next) => {
+  res.setHeader('Access-Control-Allow-Headers', 'content-type')
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, DELETE')
   next()

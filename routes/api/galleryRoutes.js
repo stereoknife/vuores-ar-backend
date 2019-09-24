@@ -1,60 +1,81 @@
 const express = require('express')
 
 const mongoose = require('mongoose')
-const Gallery = require('../models/Gallery')
-const File = require('../models/File')
+const Gallery = require(global.paths.models + '/Gallery')
+const File = require(global.paths.models + '/File')
+const Content = require(global.paths.models + '/Content')
 
 const router = express.Router()
 
-router.get('/gallery/:id?', async (req, res, next) => {
-  const id = req.params.id || req.query.id
-  if (!id && !name) return next(new Error('No id field provided as parameter or query'))
-
+router.get('/gallery/:id/:populate(*)?', async (req, res, next) => {
   try {
+    let populate = req.params.populate
     const doc = await Gallery
-      .findById(id)
+      .findById(req.params.id)
       .select(req.query.select)
-      .populate({ path: 'target' })
-      .populate({
+      .populate((() => {
+        if (populate.slice(0, 6) === 'target') {
+          populate = populate.slice(7)
+          return 'target'
+        }
+        return undefined
+      })())
+      .populate(parsePopulate(populate))
+      .exec()
+    return res.json(req.query.asObject
+      ? { elements: doc.toJSON() }
+      : doc.toJSON()
+    )
+  } catch (err) {
+    return next(err)
+  }
+})
+
+router.get('/galleries/:populate(*)?', async (req, res, next) => {
+  try {
+    let populate = req.params.populate
+    const docs = await Gallery
+      .find({ [req.query.findKey]: req.query.findVal })
+      .populate((() => {
+        if (!populate) return undefined
+        if (populate.slice(0, 6) === 'target') {
+          populate = populate.slice(7)
+          return 'target'
+        }
+        return undefined
+      })())
+      .populate(parsePopulate(populate))
+      .exec()
+    return res.status(200).json(req.query.asObject
+      ? { elements: docs.map(d => d.toJSON()) }
+      : docs.map(d => d.toJSON())
+    )
+  } catch (err) {
+    return next(err)
+  }
+})
+
+function parsePopulate (pop) {
+  console.log(pop)
+  switch (pop) {
+    case undefined:
+      return undefined
+    case 'all':
+      return ({
         path: 'contents',
         populate: {
           path: 'file'
         }
       })
-      .exec()
-    return res.status(200).json(req.query.asObject ? { elements: doc.toJSON } : doc.toJSON)
-  } catch (err) {
-    return next(err)
+    default:
+      return pop
+        .split('/')
+        .reverse()
+        .reduce((prev, curr) => ({
+          path: curr,
+          populate: prev
+        }))
   }
-})
-
-router.get('/galleries', async (req, res, next) => {
-  const find = {}[req.query.findKey] = req.query.findVal
-  try {
-    const docs = await Gallery
-      .find(find)
-      .populate({ path: 'target' })
-      .populate({
-        path: 'contents',
-          populate: {
-          path: 'file'
-        }
-      })
-      .exec()
-    return res.status(200).json(req.query.asObject ? { elements: docs.toJSON } : docs.toJSON)
-  } catch (err) {
-    return next(err)
-  }
-})
-
-function sendResult (req, res) {
-  res.locals.json = Array
-    .isArray(res.locals.docs)
-      ? res.locals.docs.length === 1
-        ? res.locals.docs[0].toJSON()
-        : res.locals.docs.map(doc => doc.toJSON())
-      : res.locals.docs.toJSON()
-  res.json(req.query.asObject ? { elements: res.locals.json } : res.locals.json)
 }
 
 // ------------------------------------------------------//
@@ -63,12 +84,12 @@ function sendResult (req, res) {
 
 router.post('/gallery', (req, res, next) => {
   Gallery.create({
-      name: req.body.name
-    },
-    (err) => {
-      if (err) return next(err)
-      res.status(201).send('Successfully created')
-    })
+    name: req.body.name
+  },
+  (err) => {
+    if (err) return next(err)
+    res.status(201).send('Successfully created')
+  })
 })
 
 router.post('/galleries', (req, res, next) => {
@@ -95,16 +116,17 @@ router.put('/gallery/:id?', async (req, res, next) => {
   }
 })
 
-router.put('/:version/galleries/', async (req, res, next) => {
-  if (!req.body.galleries || !Array.isArray(req.body.galleries)) return next(new Error("No 'targets' array field provided"))
-
+router.put('/galleries/', async (req, res, next) => {
   try {
-    await req.body.galleries.forEach(doc, i) => {
-      if (!id) return next(new Error(`Missing id in ${i}:th element`))
+    if (!req.body.galleries || !Array.isArray(req.body.galleries))
+      throw new Error("No 'targets' array field provided")
+
+    await req.body.galleries.forEach((doc, i) => {
+      if (!doc.id) return next(new Error(`Missing id in ${i}:th element`))
       const update = {
         name: doc.name
       }
-      Gallery.findByIdAndUpdate(id, update).exec()
+      Gallery.findByIdAndUpdate(doc.id, update).exec()
     })
     res.status(200).send('Gallery modified successfully')
   } catch (err) {
@@ -116,7 +138,7 @@ router.put('/:version/galleries/', async (req, res, next) => {
 // DELETE // DELETE
 // ------------------------------------------------------//
 
-router.delete('/:version/gallery/:id?', async (req, res, next) => {
+router.delete('/gallery/:id?', async (req, res, next) => {
   const id = req.params.id || req.query.id
   if (!id) return next(new Error('No id field provided as parameter or query'))
 
@@ -125,13 +147,15 @@ router.delete('/:version/gallery/:id?', async (req, res, next) => {
     await contents.forEach(async content => {
       try {
         const file = await File.findById(content.file).populate('contents').exec()
-        if (file.contents.length <= 1) File.findByIdAndDelete(content.file).exec()
-          .catch (err => next(err))
+        if (file.contents.length <= 1) {
+          File.findByIdAndDelete(content.file).exec()
+            .catch(err => next(err))
+        }
       } catch (err) {
-        return next (err)
+        return next(err)
       } finally {
         Content.findByIdAndDelete(content._id).exec()
-          .catch (err => next(err))
+          .catch(err => next(err))
       }
     })
     await Gallery.findByIdAndDelete(id).exec()
@@ -144,3 +168,5 @@ router.delete('/:version/gallery/:id?', async (req, res, next) => {
 router.delete('/galleries', (req, res) => {
   res.status(400).send("'/galleries' doesn't support DELETE requests, try '/targets'")
 })
+
+module.exports = router
