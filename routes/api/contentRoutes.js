@@ -118,6 +118,10 @@ router.put('/contents', async (req, res, next) => {
   }
 })
 
+// ------------------------------------------------------//
+// DELETE // DELETE
+// ------------------------------------------------------//
+
 router.delete('/content/:id?', async (req, res, next) => {
   try {
     const id = req.params.id || req.query.id

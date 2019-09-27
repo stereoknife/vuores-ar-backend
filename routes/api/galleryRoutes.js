@@ -14,7 +14,7 @@ router.get('/gallery/:id/:populate(*)?', async (req, res, next) => {
       .findById(req.params.id)
       .select(req.query.select)
       .populate((() => {
-        if (populate.slice(0, 6) === 'target') {
+        if (populate && populate.slice(0, 6) === 'target') {
           populate = populate.slice(7)
           return 'target'
         }
@@ -82,14 +82,19 @@ function parsePopulate (pop) {
 // CREATE // POST
 // ------------------------------------------------------//
 
-router.post('/gallery', (req, res, next) => {
-  Gallery.create({
-    name: req.body.name
-  },
-  (err) => {
-    if (err) return next(err)
-    res.status(201).send('Successfully created')
-  })
+router.post('/gallery/', async (req, res, next) => {
+  try {
+    const doc = await Gallery.create({
+      name: req.body.name
+    }).exec()
+    if (req.query.return) {
+      if (req.query.return === 'document') return res.status(201).json(doc)
+    }
+    return res.status(201).send('Successfully created')
+  }
+  catch (err) {
+    return next(err)
+  }
 })
 
 router.post('/galleries', (req, res, next) => {

@@ -1,6 +1,7 @@
 // Import express modules
 const express = require('express')
 const fileUpload = require('express-fileupload')
+const cors = require('cors')
 
 // Import mongoose modules
 const mongoose = require('mongoose')
@@ -38,19 +39,7 @@ mongoose.connect(`mongodb://${process.env.MONGO_IP || 'localhost'}`,
   .catch(err => { console.log(err) })
 
 // DEV ONLY
-router.get('*', (req, res, next) => {
-  res.setHeader('Access-Control-Allow-Headers', 'content-type')
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, DELETE')
-  next()
-})
-
-router.post('*', (req, res, next) => {
-  res.setHeader('Access-Control-Allow-Headers', 'content-type')
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, DELETE')
-  next()
-})
+router.options('*', cors())
 
 router.use(targetRoutes)
 router.use(galleryRoutes)
