@@ -123,7 +123,7 @@ router.put('/contents', async (req, res, next) => {
 // DELETE // DELETE
 // ------------------------------------------------------//
 
-router.delete('/content/:id?', cors(), async (req, res, next) => {
+router.delete('/content/:id?', async (req, res, next) => {
   try {
     const id = req.params.id || req.query.id
     if (!id)
@@ -141,7 +141,7 @@ router.delete('/content/:id?', cors(), async (req, res, next) => {
   }
 })
 
-router.delete('/contents', cors(), (req, res) => {
+router.delete('/contents', (req, res) => {
   res.status(400).send("'/contents' doesn't support DELETE requests, try '/content'")
 })
 

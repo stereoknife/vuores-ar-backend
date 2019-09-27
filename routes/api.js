@@ -40,6 +40,7 @@ mongoose.connect(`mongodb://${process.env.MONGO_IP || 'localhost'}`,
 
 // DEV ONLY
 router.options('*', cors())
+router.use(cors())
 
 router.use(targetRoutes)
 router.use(galleryRoutes)
