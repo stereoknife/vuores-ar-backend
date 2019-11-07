@@ -86,13 +86,11 @@ router.post('/gallery/', async (req, res, next) => {
   try {
     const doc = await Gallery.create({
       name: req.body.name
-    }).exec()
-    if (req.query.return) {
-      if (req.query.return === 'document') return res.status(201).json(doc)
-    }
+    })
+    if (req.query.return)
+      return res.status(201).json(doc.toJSON())
     return res.status(201).send('Successfully created')
-  }
-  catch (err) {
+  } catch (err) {
     return next(err)
   }
 })

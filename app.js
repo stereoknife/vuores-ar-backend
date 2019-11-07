@@ -39,7 +39,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(global.paths.static))
-app.use('/static', express.static(process.env.STATIC_DIR || path.join(__dirname, 'public', 'web')))
+app.use('/static', express.static(process.env.STATIC_DIR || path.join('/var', 'static')))
 
 // Use routers
 app.use('/', indexRouter)

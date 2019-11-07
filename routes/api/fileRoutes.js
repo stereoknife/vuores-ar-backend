@@ -51,23 +51,19 @@ router.post('/file', async (req, res, next) => {
       throw new Error('File missing')
     // Get data for file doc
     const type = req.files.file.mimetype.split('/')[0]
-    const name = Date.now().toString(16)
+    const name = `${type}-${Date.now().toString(16)}`
     const ext = req.files.file.name.split('.').pop()
-    const dir = path.join('public', 'ar', type, name)
+    const dir = path.join('/var', 'static', name)
 
     if (type !== 'image')
       throw new Error('Only images are supported at this moment')
 
     const vals = await Promise.all([
       sharp(req.files.file.data).clone().resize(1000).toFile([dir, ext].join('.')),
-      new Promise((resolve, reject) => {
-        File.create({
-          type: type,
-          name: name,
-          ext: ext
-        })
-          .then(doc => resolve(doc))
-          .catch(err => reject(err))
+      File.create({
+        type: type,
+        name: name,
+        ext: ext
       })
     ])
     res.status(201).json(vals[1].toJSON())
@@ -86,23 +82,19 @@ router.post('/files', async (req, res, next) => {
     await req.files.forEach(async f => {
       // Get data for file doc
       const type = f.mimetype.split('/')[0]
-      const name = Date.now().toString(16)
+      const name = `${type}-${Date.now().toString(16)}`
       const ext = f.name.split('.').pop()
-      const dir = path.join('public', 'ar', type, name)
+      const dir = path.join('/var', 'static', name)
 
       if (type !== 'image')
         throw new Error('Only images are supported at this moment')
 
       const vals = Promise.all([
         sharp(f.data).clone().resize(1000).toFile([dir, ext].join('.')),
-        new Promise((resolve, reject) => {
-          File.create({
-            type: type,
-            name: name,
-            ext: ext
-          })
-            .then(doc => resolve(doc))
-            .catch(err => reject(err))
+        File.create({
+          type: type,
+          name: name,
+          ext: ext
         })
       ])
       res.locals.return(vals[1].toJSON())

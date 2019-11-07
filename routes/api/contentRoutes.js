@@ -49,16 +49,15 @@ router.get('/contents/:populate?', async (req, res, next) => {
 // ------------------------------------------------------//
 router.post('/content', async (req, res, next) => {
   try {
-    console.log('hi')
     // Check that files exist
     if (!req.files || !req.files.file)
       next()
 
     // Get data for file doc
     const type = req.files.file.mimetype.split('/')[0]
-    const name = Date.now().toString(16)
+    const name = `${type}-${Date.now().toString(16)}`
     const ext = req.files.file.name.slice(-3)
-    const dir = path.join('public', 'ar', type, name)
+    const dir = path.join('/var', 'static', name)
 
     if (type !== 'image')
       throw new Error('Only images are supported at this moment')
@@ -75,7 +74,6 @@ router.post('/content', async (req, res, next) => {
       })
     ])
     res.locals.file = promised[1]
-    console.log('he')
     next()
   } catch (err) {
     return next(err)
@@ -84,7 +82,6 @@ router.post('/content', async (req, res, next) => {
 
 router.post('/content', async (req, res, next) => {
   try {
-    console.log('ha')
     const galleries = !req.body.galleries
       ? []
       : Array.isArray(req.body.galleries)
@@ -97,7 +94,6 @@ router.post('/content', async (req, res, next) => {
           .findOne({ gallery: g })
           .sort('-order')
           .exec()
-        console.log(res.locals.file)
         await Content.create({
           order: count ? count.order + 1 : 1,
           enabled: true,

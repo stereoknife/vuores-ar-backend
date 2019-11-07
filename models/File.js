@@ -28,10 +28,10 @@ fileSchema.virtual('thumb').get(function () {
   return [this.name, 'thumb', this.ext].join('.')
 })
 fileSchema.virtual('url').get(function () {
-  return `http://${process.env.PUBLIC_ADDRESS}/static/${this.type}/${this.file}`
+  return `http://${process.env.PUBLIC_ADDRESS}/static/${this.file}`
 })
 fileSchema.virtual('thumbUrl').get(function () {
-  return `http://${process.env.PUBLIC_ADDRESS}/static/${this.type}/${this.thumb}`
+  return `http://${process.env.PUBLIC_ADDRESS}/static/${this.thumb}`
 })
 fileSchema.virtual('contents', {
   ref: 'Content',

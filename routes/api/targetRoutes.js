@@ -68,13 +68,18 @@ function parsePopulate (pop) {
 // CREATE // POST
 // ------------------------------------------------------//
 
-router.post('/target', (req, res, next) => {
-  Target.create({
-    name: req.body.name,
-    gallery: req.body.gallery
-  })
-    .then(() => res.status(201).send('Successfully created'))
-    .catch(err => next(err))
+router.post('/target', async (req, res, next) => {
+  try {
+    const doc = await Target.create({
+      name: req.body.name,
+      gallery: req.body.gallery
+    })
+    if (req.query.return)
+      return res.status(201).json(doc.toJSON())
+    return res.status(201).send('Successfully created')
+  } catch (err) {
+    next(err)
+  }
 })
 
 router.post('/targets', (req, res, next) => {

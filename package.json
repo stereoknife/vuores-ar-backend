@@ -3,26 +3,25 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "dev": "node -r dotenv/config ./bin/www"
   },
   "dependencies": {
-    "autoprefixer": "^9.6.0",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "express-fileupload": "^1.1.5",
-    "helmet": "^3.18.0",
+    "helmet": "^3.21.1",
     "http-errors": "~1.6.3",
     "mongodb": "^3.2.7",
     "mongoose": "^5.6.2",
     "morgan": "~1.9.1",
     "multer": "^1.4.1",
-    "postcss": "^7.0.17",
-    "pug": "^2.0.4",
     "sharp": "^0.23.1"
   },
   "devDependencies": {
+    "dotenv": "^8.1.0",
     "eslint": "^6.3.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.18.2",

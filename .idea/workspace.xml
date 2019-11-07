@@ -2,94 +2,53 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb4de6d7-e121-459b-ad2b-655f258c2577" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/kam.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/File.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/www" beforeDir="false" afterPath="$PROJECT_DIR$/bin/www" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Content.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Content.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Gallery.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Gallery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/ar/image/test.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c34867989.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c34867989.thumb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c37ad75eb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c37ad75eb.thumb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c37adb360.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c37adb360.thumb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c37b09db2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c37b09db2.thumb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c37b243ed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c37b243ed.thumb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c37b2b20b.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c37b2b20b.thumb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c37b3698b.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c37b3698b.thumb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c37b485f4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c37b485f4.thumb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c37b4ba69.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c37b4ba69.thumb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c3d61ab4c.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c3d61ab4c.thumb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c3e2b3d57.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c3e2b3d57.thumb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c3e2b66ed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c3e2b66ed.thumb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c3e2b9697.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c3e2b9697.thumb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c3e2bbdb6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c3e2bbdb6.thumb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c3e2d62b5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c3e2d62b5.thumb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c3e2dce6b.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c3e2dce6b.thumb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c3e2df936.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ar/image/16c3e2df936.thumb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api/galleryRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/galleryRoutes.js" afterDir="false" />
     </list>
     <list id="ce8bb079-6f1d-47eb-9dde-7c5d7f0a2bb9" name="Revert &quot;Update JetBrains configuration&quot;" comment="Revert &quot;Update JetBrains configuration&quot;&#10;&#10;This reverts commit 0d8bffce" />
     <list id="ca209bc8-ac6c-4362-8279-103cdae14fb2" name="Update JetBrains configuration" comment="" />
-    <ignored path="$PROJECT_DIR$/.tmp/" />
-    <ignored path="$PROJECT_DIR$/temp/" />
-    <ignored path="$PROJECT_DIR$/tmp/" />
-    <ignored path="$PROJECT_DIR$/.idea/httpRequests/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/api.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2496">
-              <caret line="156" column="40" selection-start-line="156" selection-start-column="40" selection-end-line="156" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/Gallery.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/models/Content.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="36" column="34" selection-start-line="36" selection-start-column="34" selection-end-line="36" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/Target.js">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/File.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1">
-              <caret line="17" column="17" lean-forward="true" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bin/www">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -114,64 +73,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/.editorconfig" />
-        <option value="$PROJECT_DIR$/views/index.pug" />
-        <option value="$PROJECT_DIR$/bin/www" />
-        <option value="$PROJECT_DIR$/models/Count.js" />
-        <option value="$PROJECT_DIR$/models/Gallery.js" />
-        <option value="$PROJECT_DIR$/models/Content.js" />
-        <option value="$PROJECT_DIR$/models/File.js" />
-        <option value="$PROJECT_DIR$/models/new target.http" />
-        <option value="$PROJECT_DIR$/app.js" />
-        <option value="$APPLICATION_CONFIG_DIR$/scratches/rest-api.http" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/docker-compose.yml" />
-        <option value="$PROJECT_DIR$/routes/api.js" />
-      </list>
-    </option>
-  </component>
   <component name="ProjectFrameBounds" fullScreen="true">
     <option name="width" value="1440" />
     <option name="height" value="900" />
   </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="vuores-ar-backend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vuores-ar-backend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vuores-ar-backend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vuores-ar-backend" type="462c0819:PsiDirectoryNode" />
-              <item name="bin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vuores-ar-backend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vuores-ar-backend" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vuores-ar-backend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vuores-ar-backend" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
-  </component>
+  <component name="ProjectId" id="1SKhxa5FaIp6tKYXLgfNwgyiYfZ" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -440,6 +346,26 @@
       <item itemvalue="Node.js.start" />
     </list>
   </component>
+  <component name="ServiceViewManager">
+    <option name="allServicesViewState">
+      <serviceView>
+        <treeState>
+          <expand>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@7d306086" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@7d306086" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@2b88b3cf" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+          </expand>
+          <select />
+        </treeState>
+      </serviceView>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -474,6 +400,10 @@
       <workItem from="1566395242865" duration="6110000" />
       <workItem from="1566913092884" duration="1074000" />
       <workItem from="1567060751185" duration="2659000" />
+      <workItem from="1571318446207" duration="642000" />
+      <workItem from="1571344244569" duration="241000" />
+      <workItem from="1571494626570" duration="208000" />
+      <workItem from="1572696849857" duration="880000" />
     </task>
     <task id="LOCAL-00001" summary="Add docker compose (for mongodb)">
       <created>1563301033480</created>
@@ -569,34 +499,6 @@
     <option name="localTasksCounter" value="14" />
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80330000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4990403" visible="true" weight="0.17336152" />
-      <window_info id="Structure" order="1" sideWeight="0.5009597" side_tool="true" weight="0.24947146" />
-      <window_info id="npm" order="2" side_tool="true" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49964765" weight="0.27710843" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" weight="0.35421687" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32891566" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5003524" side_tool="true" weight="0.32891566" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.19277108" />
-      <window_info anchor="bottom" id="REST Client" order="11" weight="0.3759036" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
@@ -606,20 +508,7 @@
         <entry key="MAIN">
           <value>
             <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
+              <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>
@@ -653,134 +542,6 @@
     <MESSAGE value="Update Docker compose" />
     <MESSAGE value="Delete duplicate word in error message" />
     <option name="LAST_COMMIT_MESSAGE" value="Delete duplicate word in error message" />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/=2.3.1" />
-    <entry file="file://$PROJECT_DIR$/views/addgallery.pug">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/ar/image/test.png" />
-    <entry file="file://$PROJECT_DIR$/public/ar/image/IMG_20180926_0003.jpg" />
-    <entry file="file://$PROJECT_DIR$/public/ar/image/IMG_20180926_0034.jpg" />
-    <entry file="file://$PROJECT_DIR$/.editorconfig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="8" column="17" lean-forward="true" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/Count.js" />
-    <entry file="file://$PROJECT_DIR$/node_modules/standard/eslintrc.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/index.pug">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/restClient/lib/restClient.jar!/com/intellij/ws/rest/client/requests/collection/post-requests.http">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="31" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/new target.http" />
-    <entry file="file://$PROJECT_DIR$/public/ar/image/16c3d61ab4c.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/express/lib/router/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="46" column="11" selection-start-line="46" selection-start-column="11" selection-end-line="46" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/rest-api.http">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/Target.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/File.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/Gallery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1">
-          <caret line="17" column="17" lean-forward="true" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="725">
-          <caret line="62" column="18" selection-start-line="62" selection-start-column="18" selection-end-line="62" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker-compose.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="15" column="7" lean-forward="true" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/www">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2496">
-          <caret line="156" column="40" selection-start-line="156" selection-start-column="40" selection-end-line="156" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/Content.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="36" column="34" selection-start-line="36" selection-start-column="34" selection-end-line="36" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
   </component>
   <component name="masterDetails">
     <states>
