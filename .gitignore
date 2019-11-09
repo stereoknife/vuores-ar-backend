@@ -61,6 +61,7 @@ typings/
 .next
 
 *.unsafe.js
+.DS_Store
 
 docker-compose.yml
 public/ar
